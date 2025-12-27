@@ -1,0 +1,2 @@
+POJO - plain old java object
+in Autowired - Field injection is not recommended
