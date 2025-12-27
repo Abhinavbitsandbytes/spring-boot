@@ -1,24 +1,21 @@
 package com.example.abhinavkr.module1introduction.controllers;
 
 import com.example.abhinavkr.module1introduction.dto.EmployeeDTO;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.time.LocalDate;
-import java.util.List;
 
 @RestController
+@RequestMapping(path = "/employees")
 public class EmployeeController {
-    @GetMapping(path = "/employee/{employeeId}")
+    @GetMapping(path = "/{employeeId}") // there was a typo. s was missing.
     // variable name employeeId should be same here and in the EmployeeDTO argument
     public EmployeeDTO getEmployeeById(@PathVariable Long employeeId) {
         return new EmployeeDTO(employeeId, "Abhinav", "abhinav@gmail.com", 30, LocalDate.of(2025, 8, 18), true);
 
     }
 
-    @GetMapping(path = "/employees")
+    @GetMapping(path = "")
     public String getAllEmployees(@RequestParam Integer age, @RequestParam String sortBy) {
         return "Hi age " + age + " " + sortBy;
     }
