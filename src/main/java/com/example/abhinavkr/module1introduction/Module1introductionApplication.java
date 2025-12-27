@@ -10,15 +10,15 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 @SpringBootApplication
 public class Module1introductionApplication implements CommandLineRunner {
 
+	@Autowired
+	NotificationService notificationServiceObj;
 	public static void main(String[] args) {
 		SpringApplication.run(Module1introductionApplication.class, args);
 	}
 
 	@Override
 	public void run(String... args) throws Exception {
-		NotificationService notificationServiceObj = new EmailNotificationService();
+		// now we are using dependency injection 
 		notificationServiceObj.send("hello");
-//			this is tight coupling because if we want to use SmsNotificationService in the future, I will have to come here and change the code.
-//			Its tight coupling
 	}
 }
