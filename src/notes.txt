@@ -1,2 +1,6 @@
-POJO - plain old java object
-in Autowired - Field injection is not recommended
+->POJO - plain old java object
+->in Autowired - Field injection is not recommended
+-> How Spring Resolve Dependencies?
+  1. By Type -> EmailService
+  2. If multiple beans -> use name or @Qualifier
+  3. If still ambiguous -> use @Primary
