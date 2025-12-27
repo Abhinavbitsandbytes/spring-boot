@@ -10,15 +10,16 @@ import java.time.LocalDate;
 public class EmployeeController {
     @GetMapping(path = "/{employeeId}") // there was a typo. s was missing.
     // variable name employeeId should be same here and in the EmployeeDTO argument
-    public EmployeeDTO getEmployeeById(@PathVariable Long employeeId) {
-        return new EmployeeDTO(employeeId, "Abhinav", "abhinav@gmail.com", 30, LocalDate.of(2025, 8, 18), true);
+    public EmployeeDTO getEmployeeById(@PathVariable(name="employeeId") Long id) {
+        return new EmployeeDTO(id, "Abhinav", "abhinav@gmail.com", 30, LocalDate.of(2025, 8, 18), true);
 
     }
 
     @GetMapping(path = "")
-    public String getAllEmployees(@RequestParam Integer age, @RequestParam String sortBy) {
+    public String getAllEmployees(@RequestParam(name="inputAge") Integer age, @RequestParam String sortBy) {
         return "Hi age " + age + " " + sortBy;
     }
+    // url to hit now - http://localhost:8080/employees?inputAge=30&sortBy=price
 }
 
 //if url = "http://localhost:8080/employees?age=30&sortBy=price"
