@@ -7,14 +7,12 @@ import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
-
 @SpringBootApplication
 public class Module1introductionApplication implements CommandLineRunner {
 
 	final NotificationService notificationServiceObj;
 
-	public Module1introductionApplication(
-			@Qualifier("smsNotif") NotificationService notificationServiceObj){
+	public Module1introductionApplication(NotificationService notificationServiceObj){
 			this.notificationServiceObj = notificationServiceObj; // constructor DI (preferred instead of Field injection)
 
 	}
