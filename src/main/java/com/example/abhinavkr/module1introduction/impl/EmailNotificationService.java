@@ -1,8 +1,10 @@
 package com.example.abhinavkr.module1introduction.impl;
 
 import com.example.abhinavkr.module1introduction.NotificationService;
+import org.springframework.context.annotation.Primary;
 import org.springframework.stereotype.Component;
 
+@Primary
 @Component
 public class EmailNotificationService implements NotificationService {
 

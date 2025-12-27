@@ -18,7 +18,11 @@ public class Module1introductionApplication implements CommandLineRunner {
 
 	@Override
 	public void run(String... args) throws Exception {
-		// now we are using dependency injection 
 		notificationServiceObj.send("hello");
 	}
 }
+// if we use @Component annotation in both EmailNotification and Sms Service we will get error -
+// Field notificationServiceObj in com.example.abhinavkr.module1introduction.Module1introductionApplication required a single bean, but 2 were found:
+
+//solution
+//1 - annotate anyone with Primary. if you add in email, output - email sending...hello
