@@ -9,7 +9,7 @@ import org.springframework.stereotype.Component;
 //@Primary
 @Component
 @Qualifier("emailNotif")
-@ConditionalOnProperty(name = "notification.type", havingValue ="email")  // create the bean of this particular call only if notification.type has value "email"
+//@ConditionalOnProperty(name = "notification.type", havingValue ="email")  // create the bean of this particular call only if notification.type has value "email"
 public class EmailNotificationService implements NotificationService {
 
     @Override
