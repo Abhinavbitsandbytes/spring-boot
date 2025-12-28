@@ -244,3 +244,29 @@ PATCH /users/1
   "age": 31
 }
 Everything else stays exactly the same.
+
+
+// in the end of this commit
+url - http://localhost:8080/employees
+type - post
+input in postman -
+{
+    "name": "ui",
+    "email": "abhi",
+    "age": 2,
+    "dateOfJoining": "2025-08-18",
+    "isActive": true,
+    "role": "USER",
+    "salary": 5000.00
+}
+
+output -
+{
+    "message": "input validation failed",
+    "status": "400 BAD_REQUEST",
+    "subErrors": [
+        "Email should be valid",
+        "Name must be between 3 and 10 characters",
+        "Age should not be less than 18"
+    ]
+}
