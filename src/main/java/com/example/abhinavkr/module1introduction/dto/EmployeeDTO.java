@@ -1,5 +1,6 @@
 package com.example.abhinavkr.module1introduction.dto;
 
+import com.example.abhinavkr.module1introduction.annotations.EmployeeRoleValidation;
 import jakarta.validation.constraints.*;
 
 import java.time.LocalDate;
@@ -21,8 +22,10 @@ public class EmployeeDTO {
     private Integer age;
 
     @NotBlank(message = "Role cannot be Blank")
-    @Pattern(regexp = "^(ADMIN|USER)$", message = "Role must be ADMIN, USER,")
+//    @Pattern(regexp = "^(ADMIN|USER)$", message = "Role must be ADMIN, USER,")
+    @EmployeeRoleValidation
     private String role;
+
 
     @NotNull(message = "Salary cannot be null")
     @Positive(message = "Salary must be positive")
