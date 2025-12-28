@@ -23,6 +23,8 @@ public class EmployeeEntity {
     private Integer age;
     private LocalDate dateOfJoining;
     private boolean isActive;
+    private String role;
+    private Double Salary;
 }
 
 // it will tell the hibernate that this is the java class which you need to create table inside database.
