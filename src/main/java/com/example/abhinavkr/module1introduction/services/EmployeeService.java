@@ -10,6 +10,7 @@ import org.springframework.data.util.ReflectionUtils;
 import java.lang.reflect.Field;
 import java.util.List;
 import java.util.Map;
+import java.util.Optional;
 
 @Service
 public class EmployeeService {
@@ -21,9 +22,9 @@ public class EmployeeService {
         this.modelMapper = modelMapper;
     }
 
-    public EmployeeDTO getEmployeeById(Long id) {
-       EmployeeEntity employeeEntity = employeeRepository.findById(id).orElse(null);
-       return modelMapper.map(employeeEntity, EmployeeDTO.class);
+    public Optional<EmployeeDTO> getEmployeeById(Long id) {
+       Optional<EmployeeEntity> employeeEntity = employeeRepository.findById(id);
+       return employeeEntity.map(entity -> modelMapper.map(entity, EmployeeDTO.class));
     }
 
     public List<EmployeeDTO> getAllEmployees() {
@@ -64,6 +65,7 @@ public class EmployeeService {
 
     public EmployeeDTO updatePartialEmployeeById(Long employeeId, Map<String, Object> updates) {
         boolean exists = isExistsByEmployeeId(employeeId);
+        System.out.println(exists + " existance check");
         if (!exists) {
             return null;
         }
