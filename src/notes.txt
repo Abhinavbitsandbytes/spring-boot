@@ -204,3 +204,43 @@ JPA is an abstraction over SQL, not a substitute for a database.
            // if any field is missing in EmployeeDTO then it will be ignored
            // if any field is missing in EmployeeEntity then it will be set to null in EmployeeDTO
        }
+
+ -> PUT vs PATCH (HTTP)
+    PUT
+
+    Meaning: Replace the entire resource.
+
+    What you send: Full object (even fields that didn’t change).
+
+    What happens: Server overwrites the existing resource.
+
+    Missing fields: Deleted / reset.
+
+    Idempotent: ✅ Yes (same request → same result).
+
+    Example
+    PUT /users/1
+    {
+      "name": "Abhinav",
+      "age": 30
+    }
+If email existed earlier → it’s gone.
+
+PATCH
+
+Meaning: Modify part of the resource.
+
+What you send: Only changed fields.
+
+What happens: Server updates selectively.
+
+Missing fields: Untouched.
+
+Idempotent: ⚠️ Not guaranteed (depends on implementation).
+
+Example
+PATCH /users/1
+{
+  "age": 31
+}
+Everything else stays exactly the same.

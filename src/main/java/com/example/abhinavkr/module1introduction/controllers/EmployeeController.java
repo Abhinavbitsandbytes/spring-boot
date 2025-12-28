@@ -3,11 +3,13 @@ import com.example.abhinavkr.module1introduction.dto.EmployeeDTO;
 import com.example.abhinavkr.module1introduction.services.EmployeeService;
 import org.springframework.web.bind.annotation.*;
 import java.util.List;
+import java.util.Map;
 
 @RestController
 @RequestMapping(path = "/employees")
 public class EmployeeController {
     private final EmployeeService employeeService;
+
     // constructor
     public EmployeeController(EmployeeService employeeService) {
         // this is a constructor injection
@@ -30,8 +32,18 @@ public class EmployeeController {
         return employeeService.createEmployee(inputEmployee);
     }
 
-    @PutMapping
-    public String updateEmployeeId() {
-        return "Hello from put";
+    @PutMapping(path = "/{employeeId}")
+    public EmployeeDTO updateEmployeeId(@RequestBody EmployeeDTO employeeDTO, @PathVariable Long employeeId) {
+        return employeeService.updateEmployeeId(employeeId, employeeDTO);
+    }
+
+    @DeleteMapping(path = "/{employeeId}")
+    public boolean deleteEmployeeById(@PathVariable Long employeeId) {
+        return employeeService.deleteEmployeeById(employeeId);
+    }
+
+    @PatchMapping(path= "/{employeeId}")
+    public EmployeeDTO updatePartialEmployeeById(@RequestBody Map<String, Object> updates, @PathVariable Long employeeId) {
+    return employeeService.updatePartialEmployeeById(employeeId, updates);
     }
 }
